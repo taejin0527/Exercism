@@ -2,19 +2,12 @@ class ArmstrongNumbers {
 
     boolean isArmstrongNumber(int numberToCheck) {
 
-        int digit = numberToCheck;
-        int len = (int) (Math.log10(numberToCheck) + 1);
-        int sum = 0;
+        String number = String.valueOf(numberToCheck);
+        int len = number.length();
 
-        while (digit > 0) {
-            int d = digit % 10;
+        Integer result = number.chars().map(Character::getNumericValue).map(n -> (int) (Math.pow(n, len))).sum();
 
-            sum += Math.pow(d, len);
-
-            digit /= 10;
-        }
-
-        return sum == numberToCheck;
+        return result == numberToCheck;
     }
 
 }
